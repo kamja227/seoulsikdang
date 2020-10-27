@@ -1,0 +1,68 @@
+ <!DOCTYPE html>
+<!--suppress CssUnusedSymbol, JSUnresolvedLibraryURL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/star-rating.css" media="all" type="text/css"/>
+    <link rel="stylesheet" href="../css/themes/krajee-fa/theme.css" media="all" type="text/css"/>
+    <link rel="stylesheet" href="../css/themes/krajee-svg/theme.css" media="all" type="text/css"/>
+    <link rel="stylesheet" href="../css/themes/krajee-uni/theme.css" media="all" type="text/css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="../js/star-rating.js" type="text/javascript"></script>
+    <script src="../js/themes/krajee-fa/theme.js" type="text/javascript"></script>
+    <script src="../js/themes/krajee-svg/theme.js" type="text/javascript"></script>
+    <script src="../js/themes/krajee-uni/theme.js" type="text/javascript"></script>
+    <SCRIPT language="javascript" type="text/javascript">
+  //<![CDATA[
+    function fc_chk_byte(aro_name,ari_max) {
+      var ls_str = aro_name.value;
+      var li_str_len = ls_str.length;
+      var li_max = ari_max;
+      var i = li_byte = li_len = 0;
+      var ls_one_char = ls_str2 = "";
+      for(i=0; i< li_str_len; i++) {
+        ls_one_char = ls_str.charAt(i);
+        li_byte++;
+        
+        if(li_byte <= li_max){
+          li_len = i + 1;
+        }
+      }
+      if(li_byte > li_max) {
+        alert( li_max + "byte, 초과 ");
+        ls_str2 = ls_str.substr(0, li_len);
+        aro_name.value = ls_str2;
+        document.sms.char_byte.value = 80;
+      }else {
+        document.sms.char_byte.value = li_byte;
+      }
+      aro_name.focus();
+    }
+  //]]>
+  </SCRIPT>
+
+<body>
+    <div class='w3-half'>
+    <div class='w3-container w3-white'>
+    <h2 class='w3-border-bottom w3-border-light-grey w3-padding-16'>리뷰 작성</h2>
+<div class="container">
+<form action="review_post.php" name="review" method="post">
+   <p><label>맛</label>
+    <input type="text" class="rating rating-loading" value="0" name="rev_taste" data-min="0" data-max="5"  data-step="0.5" data-size="xs"></p>
+   <p><label>위치</label>
+   <input type="text" class="rating rating-loading" value="0" name="rev_location" data-min="0" data-max="5"  data-step="0.5" data-size="xs"></p>
+   <p><label>분위기</label>
+   <input type="text" class="rating rating-loading" value="0" name="rev_mood" data-min="0" data-max="5"  data-step="0.5" data-size="xs"></p>
+   <p><label>친절함</label>
+ 	<input type="text" class="rating rating-loading" value="0" name="rev_kindness" data-min="0" data-max="5"  data-step="0.5" data-size="xs"></p>
+   <p><label>고객 후기</label></p>
+   <p>
+ <textarea name="rev_text" cols="80" rows="7" onkeyup="fc_chk_byte(this, 500)" placeholder=" 500자 미만 입력 가능"></textarea></p>
+    <input type="hidden" name="resr_no" value="$resr_no">
+    <input type="hidden" name="resr_rest_no" value="$resr_rest_no"> 
+    <input type="submit" class="w3-button w3-red w3-margin-top" value="작성 완료">
+
+    </form></div></div></div></body></head></html>
+  
